@@ -15,7 +15,7 @@ sudo install -m 0755 -d /etc/apt/keyrings
 
 # Step 4: Download Docker's GPG key
 # The GPG key is used to verify the authenticity of packages from Docker's repository.
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 
 # Step 5: Set permissions for the GPG key
 # Ensures the key can be read by all users but not modified, enhancing security.
@@ -25,7 +25,7 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 # - The repository URL is specific to the Ubuntu version.
 # - The GPG key is used to sign packages for secure installation.
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
